@@ -1,4 +1,4 @@
-var createRandom = require("seedrandom");
+import createRandom from "random-seed";
 
 const characters = [
   "Isaac",
