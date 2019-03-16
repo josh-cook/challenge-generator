@@ -13,6 +13,6 @@
     "parcel-bundler": "^1.12.2"
   },
   "dependencies": {
-    "seedrandom": "^3.0.1"
+    "random-seed": "^0.3.0"
   }
 }
