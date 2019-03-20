@@ -4,7 +4,7 @@
   "description": "A Challenge Generator For Binding Of Isaac",
   "repository": "git@github.com:cookiej91/challenge-generator.git",
   "author": "Josh Cook (cookiej91)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build --public-url . index.html"
