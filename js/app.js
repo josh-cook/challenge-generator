@@ -1,8 +1,8 @@
 import { getRandomWithSeed } from "./random";
-const items = require("./json/items.json");
-const colours = require("./json/colours.json");
-const adjectives = require("./json/adjectives.json");
-const characters = require("./json/characters.json");
+const items = require("../json/items.json");
+const colours = require("../json/colours.json");
+const adjectives = require("../json/adjectives.json");
+const characters = require("../json/characters.json");
 
 const today = new Date();
 
