@@ -2,22 +2,7 @@ import createRandom from "random-seed";
 const items = require("./items.json");
 const colours = require("./colours.json");
 const adjectives = require("./adjectives.json");
-
-const characters = [
-  "Isaac",
-  "Magdalene",
-  "Cain",
-  "???",
-  "Eve",
-  "Samson",
-  "Azazel",
-  "Lazarus",
-  "Eden",
-  "The Lost",
-  "Lilith",
-  "Keeper",
-  "Apollyon"
-];
+const characters = require("./characters.json");
 
 // Get a random element from the array based on the seed provided.
 function getRandomWithSeed(array, seed, quantity = 1) {
