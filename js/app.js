@@ -24,4 +24,6 @@ document.getElementById("startingItems").textContent = getRandomWithSeed(
   items,
   seed,
   3
-);
+)
+  .map(items => `C${items.id} ${items.name}`)
+  .join(", ");
