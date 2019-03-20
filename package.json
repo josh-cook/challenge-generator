@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel html/index.html",
-    "build": "parcel build --public-url . index.html"
+    "build": "parcel build --public-url . html/index.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.2"
