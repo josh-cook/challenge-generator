@@ -1,4 +1,7 @@
 import createRandom from "random-seed";
+const items = require("./items.json");
+const colours = require("./colours.json");
+const adjectives = require("./adjectives.json");
 
 const characters = [
   "Isaac",
@@ -14,38 +17,6 @@ const characters = [
   "Lilith",
   "Keeper",
   "Apollyon"
-];
-
-const startingItems = [
-  "Brimstone",
-  "Chocolate Milk",
-  "Soy Milk",
-  "Moms Knife",
-  "Book Of Revelations"
-];
-
-const colours = [
-  "Red",
-  "Blue",
-  "Indigo",
-  "Brown",
-  "Orange",
-  "Yellow",
-  "Violet",
-  "Green",
-  "Olive"
-];
-
-const things = [
-  "Bathtub",
-  "Sink",
-  "Table",
-  "Fish",
-  "Dog",
-  "Cat",
-  "Beaver",
-  "Pistol",
-  "Pen"
 ];
 
 // Get a random element from the array based on the seed provided.
@@ -73,15 +44,15 @@ const seed = today.getTime();
 
 const playableCharacter = getRandomWithSeed(characters, seed);
 
-const title = `${getRandomWithSeed(colours, seed)}
-  ${playableCharacter}
-  ${getRandomWithSeed(things, seed)}`;
+const title = `${getRandomWithSeed(adjectives, seed)}
+  ${getRandomWithSeed(colours, seed)}
+  ${playableCharacter}`;
 
 document.getElementById("title").textContent = title;
 document.getElementById("seed").textContent = seed;
 document.getElementById("character").textContent = playableCharacter;
 document.getElementById("startingItems").textContent = getRandomWithSeed(
-  startingItems,
+  items,
   seed,
   2
 );
