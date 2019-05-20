@@ -1,0 +1,12 @@
+body {
+  font-family: "Press Start 2P", cursive;
+}
+
+#pageTitle {
+  text-align: center;
+  color: #c63fca;
+}
+
+#challengeTitle {
+  font-size: 2rem;
+}
