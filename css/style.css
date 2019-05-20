@@ -1,0 +1,12 @@
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+#pageTitle {
+  text-align: center;
+}
+
+#challengeTitle {
+  font-size: 2rem;
+}
