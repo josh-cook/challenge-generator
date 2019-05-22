@@ -2,7 +2,7 @@ body {
   font-family: "Press Start 2P", cursive;
 }
 
-#pageTitle {
+.pageTitle {
   text-align: center;
   color: #c63fca;
   grid-column: 1 / 4;
