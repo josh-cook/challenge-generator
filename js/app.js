@@ -19,11 +19,11 @@ const title = `${getRandomWithSeed(adjectives, seed)}
 document.getElementById("title").textContent = title;
 document.getElementById("seed").textContent = seed;
 document.getElementById("character").textContent = playableCharacter;
-document.getElementById("startingItems").textContent = getRandomWithSeed(
+document.getElementById("starting-items").textContent = getRandomWithSeed(
   items,
   seed,
   3
 )
   .map(items => `C${items.id} ${items.name}`)
   .join(", ");
-document.getElementById("endRoom").textContent = endingRoom;
+document.getElementById("end-room").textContent = endingRoom;
