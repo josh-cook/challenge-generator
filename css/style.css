@@ -2,7 +2,7 @@ body {
   font-family: "Press Start 2P", cursive;
 }
 
-.pageTitle {
+.page-title {
   text-align: center;
   color: #c63fca;
   grid-column: 1 / 4;
@@ -24,7 +24,7 @@ body {
   opacity: 0.5;
 }
 
-.challengeTitle {
+.challenge-title {
   text-align: center;
   font-size: 2rem;
   grid-column: 1 / 4;
@@ -36,6 +36,6 @@ body {
   grid-row: 3;
 }
 
-.valueContainer {
+.value-container {
   display: block;
 }
