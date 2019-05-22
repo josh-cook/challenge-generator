@@ -16,6 +16,14 @@ body {
   grid-template-rows: repeat(2, 1fr);
 }
 
+.rule + .rule {
+  margin-top: 10px;
+}
+
+.rule-type {
+  opacity: 0.5;
+}
+
 .challengeTitle {
   text-align: center;
   font-size: 2rem;
