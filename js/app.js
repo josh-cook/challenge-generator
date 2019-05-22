@@ -6,15 +6,26 @@ import characters from "../json/characters.json";
 import rooms from "../json/rooms.json";
 
 const today = new Date();
+
 // Get today's midnight.
 today.setUTCHours(0, 0, 0, 0);
 
-const seed = today.getTime();
-const [ playableCharacter ] = getRandomWithSeed(characters, seed);
-const [ endingRoom ] = getRandomWithSeed(rooms, seed);
-const [ colour ] = getRandomWithSeed(colours, seed);
+let seed = today.getTime();
+const url = new URL(document.location);
+const urlSeed = url.searchParams.get("seed");
 
-document.getElementById("title-adjective").textContent = getRandomWithSeed(adjectives, seed);
+if (urlSeed !== null) {
+  seed = urlSeed;
+}
+
+const [playableCharacter] = getRandomWithSeed(characters, seed);
+const [endingRoom] = getRandomWithSeed(rooms, seed);
+const [colour] = getRandomWithSeed(colours, seed);
+
+document.getElementById("title-adjective").textContent = getRandomWithSeed(
+  adjectives,
+  seed
+);
 
 const titleColourElement = document.getElementById("title-colour");
 
