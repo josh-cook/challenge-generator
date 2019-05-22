@@ -10,13 +10,18 @@ const today = new Date();
 today.setUTCHours(0, 0, 0, 0);
 
 const seed = today.getTime();
-const playableCharacter = getRandomWithSeed(characters, seed);
-const endingRoom = getRandomWithSeed(rooms, seed);
-const title = `${getRandomWithSeed(adjectives, seed)}
-  ${getRandomWithSeed(colours, seed)}
-  ${playableCharacter}`;
+const [ playableCharacter ] = getRandomWithSeed(characters, seed);
+const [ endingRoom ] = getRandomWithSeed(rooms, seed);
+const [ colour ] = getRandomWithSeed(colours, seed);
 
-document.getElementById("title").textContent = title;
+document.getElementById("title-adjective").textContent = getRandomWithSeed(adjectives, seed);
+
+const titleColourElement = document.getElementById("title-colour");
+
+titleColourElement.style.color = colour.hex;
+titleColourElement.textContent = colour.name;
+
+document.getElementById("title-character").textContent = playableCharacter;
 document.getElementById("seed").textContent = seed;
 document.getElementById("character").textContent = playableCharacter;
 document.getElementById("starting-items").textContent = getRandomWithSeed(
