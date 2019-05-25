@@ -1,8 +1,8 @@
 import { getRandomWithSeed } from "./random";
-import items from "../json/items.json";
-import colours from "../json/colours.json";
 import adjectives from "../json/adjectives.json";
 import characters from "../json/characters.json";
+import colours from "../json/colours.json";
+import items from "../json/items.json";
 import rooms from "../json/rooms.json";
 
 const today = new Date();
@@ -13,8 +13,10 @@ today.setUTCHours(0, 0, 0, 0);
 let seed = today.getTime();
 const url = new URL(document.location);
 const urlSeed = url.searchParams.get("seed");
+let newUrl = "";
 
 if (urlSeed !== null) {
+  newUrl = "";
   seed = urlSeed;
 }
 
@@ -43,3 +45,15 @@ document.getElementById("starting-items").textContent = getRandomWithSeed(
   .map(items => `C${items.id} ${items.name}`)
   .join(", ");
 document.getElementById("end-room").textContent = endingRoom;
+document.getElementById("generate-seed").addEventListener("click", function() {
+  newUrl = `?seed=${generateANewSeed()}`;
+  redirect(newUrl);
+});
+
+function generateANewSeed() {
+  return 10 * Math.random();
+}
+
+function redirect(redirectUrl) {
+  window.location.replace(redirectUrl);
+}

@@ -46,9 +46,7 @@ body {
   display: block;
 }
 
-.share,
-.generate-seed,
-.help {
+.btn {
   font-family: "Press Start 2P";
   box-shadow: 2px 1px;
 }
