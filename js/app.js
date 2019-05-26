@@ -11,12 +11,13 @@ const today = new Date();
 today.setUTCHours(0, 0, 0, 0);
 
 let seed = today.getTime();
+const alertDiv = document.getElementById("alert-box");
+alertDiv.style.visibility = "hidden";
+
 const url = new URL(document.location);
 const urlSeed = url.searchParams.get("seed");
-let newUrl = "";
 
 if (urlSeed !== null) {
-  newUrl = "";
   seed = urlSeed;
 }
 
@@ -46,14 +47,36 @@ document.getElementById("starting-items").textContent = getRandomWithSeed(
   .join(", ");
 document.getElementById("end-room").textContent = endingRoom;
 document.getElementById("generate-seed").addEventListener("click", function() {
-  newUrl = `?seed=${generateANewSeed()}`;
-  redirect(newUrl);
+  window.location = `?seed=${generateRandomSeed()}`;
+});
+document.getElementById("share").addEventListener("click", function() {
+  copyToClipboard();
 });
 
-function generateANewSeed() {
-  return 10 * Math.random();
+function generateRandomSeed() {
+  const r = Math.random()
+    .toString(36)
+    .substring(7);
+  const rand = Math.floor(999 * Math.random());
+  return `${r}${rand}`;
 }
 
-function redirect(redirectUrl) {
-  window.location.replace(redirectUrl);
+function copyToClipboard() {
+  // create new element to append url to so we can copy the text to clipboard
+  const newElement = document.createElement("input");
+  const text = window.location.href;
+
+  document.body.appendChild(newElement);
+  newElement.value = text;
+  newElement.select();
+  document.execCommand("copy");
+
+  // tear down
+  document.body.removeChild(newElement);
+
+  // show the alert for 3 seconds
+  alertDiv.style.visibility = "visible";
+  setTimeout(function() {
+    alertDiv.style.visibility = "hidden";
+  }, 3000);
 }
