@@ -1,2 +1,2 @@
-# challenge-generator
-A Challenge Generator For Binding Of Isaac
+# Challenge Generator
+This is a Challenge Generator For Binding Of Isaac - Afterbirth+.
