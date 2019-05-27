@@ -52,6 +52,10 @@ document.getElementById("generate-seed").addEventListener("click", function() {
 document.getElementById("share").addEventListener("click", function() {
   copyToClipboard();
 });
+document.getElementById("daily").addEventListener("click", function() {
+  // To remove the search params
+  window.location = window.location.pathname;
+});
 
 function generateRandomSeed() {
   const r = Math.random()
