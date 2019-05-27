@@ -53,6 +53,10 @@ body {
   border-color: black;
 }
 
+.daily {
+  display: none;
+}
+
 .share {
   cursor: copy;
 }
