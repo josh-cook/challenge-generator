@@ -18,6 +18,8 @@ const url = new URL(document.location);
 const urlSeed = url.searchParams.get("seed");
 
 if (urlSeed !== null) {
+  let daily = document.getElementById("daily");
+  daily.style.display = "initial";
   seed = urlSeed;
 }
 
@@ -51,6 +53,11 @@ document.getElementById("generate-seed").addEventListener("click", function() {
 });
 document.getElementById("share").addEventListener("click", function() {
   copyToClipboard();
+});
+
+daily.addEventListener("click", function() {
+  // To remove the search params
+  window.location = window.location.pathname;
 });
 
 function generateRandomSeed() {
