@@ -2,6 +2,7 @@
 
 This is a Challenge Generator For Binding Of Isaac - Afterbirth+.
 
+Try it out here:
 [Binding of Isaac - Challenge Generator](https://cookiej91.github.io/challenge-generator/)
 
 A daily seed is automatically generated based on the days current date.
