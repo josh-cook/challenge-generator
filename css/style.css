@@ -49,6 +49,8 @@ body {
 .btn {
   font-family: "Press Start 2P";
   box-shadow: 2px 1px;
+  border-style: inset;
+  border-color: black;
 }
 
 .share {
