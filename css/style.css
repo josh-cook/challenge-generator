@@ -1,5 +1,5 @@
 body {
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", monospace;
 }
 
 .page-title {
@@ -38,4 +38,29 @@ body {
 
 .value-container {
   display: block;
+}
+
+.buttons {
+  grid-column: 2;
+  grid-row: 4;
+  display: block;
+}
+
+.btn {
+  font-family: "Press Start 2P";
+  box-shadow: 2px 1px;
+}
+
+.share {
+  cursor: copy;
+}
+
+.help {
+  cursor: help;
+}
+
+.alert-box {
+  text-align: center;
+  padding: 20px;
+  grid-column: 1 / 4;
 }

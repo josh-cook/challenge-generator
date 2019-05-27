@@ -1,8 +1,8 @@
 import { getRandomWithSeed } from "./random";
-import items from "../json/items.json";
-import colours from "../json/colours.json";
 import adjectives from "../json/adjectives.json";
 import characters from "../json/characters.json";
+import colours from "../json/colours.json";
+import items from "../json/items.json";
 import rooms from "../json/rooms.json";
 
 const today = new Date();
@@ -11,6 +11,9 @@ const today = new Date();
 today.setUTCHours(0, 0, 0, 0);
 
 let seed = today.getTime();
+const alertDiv = document.getElementById("alert-box");
+alertDiv.style.visibility = "hidden";
+
 const url = new URL(document.location);
 const urlSeed = url.searchParams.get("seed");
 
@@ -43,3 +46,37 @@ document.getElementById("starting-items").textContent = getRandomWithSeed(
   .map(items => `C${items.id} ${items.name}`)
   .join(", ");
 document.getElementById("end-room").textContent = endingRoom;
+document.getElementById("generate-seed").addEventListener("click", function() {
+  window.location = `?seed=${generateRandomSeed()}`;
+});
+document.getElementById("share").addEventListener("click", function() {
+  copyToClipboard();
+});
+
+function generateRandomSeed() {
+  const r = Math.random()
+    .toString(36)
+    .substring(7);
+  const rand = Math.floor(999 * Math.random());
+  return `${r}${rand}`;
+}
+
+function copyToClipboard() {
+  // create new element to append url to so we can copy the text to clipboard
+  const newElement = document.createElement("input");
+  const text = window.location.href;
+
+  document.body.appendChild(newElement);
+  newElement.value = text;
+  newElement.select();
+  document.execCommand("copy");
+
+  // tear down
+  document.body.removeChild(newElement);
+
+  // show the alert for 3 seconds
+  alertDiv.style.visibility = "visible";
+  setTimeout(function() {
+    alertDiv.style.visibility = "hidden";
+  }, 3000);
+}
