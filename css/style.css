@@ -1,5 +1,8 @@
 body {
   font-family: "Press Start 2P", monospace;
+  color: aliceblue;
+  background-image: url(../assets/background1.png);
+  background-size: cover;
 }
 
 .page-title {
