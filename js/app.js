@@ -1,9 +1,13 @@
-import { getRandomWithSeed } from "./random";
+import {
+  getRandomWithSeed
+} from "./random";
 import adjectives from "../json/adjectives.json";
 import characters from "../json/characters.json";
 import colours from "../json/colours.json";
 import items from "../json/items.json";
 import rooms from "../json/rooms.json";
+
+import WikiApi from "./wikiapi";
 
 const today = new Date();
 
@@ -40,22 +44,32 @@ titleColourElement.textContent = colour.name;
 document.getElementById("title-character").textContent = playableCharacter;
 document.getElementById("seed").textContent = seed;
 document.getElementById("character").textContent = playableCharacter;
-document.getElementById("starting-items").textContent = getRandomWithSeed(
-  items,
-  seed,
-  3
-)
-  .map(items => `C${items.id} ${items.name}`)
-  .join(", ");
+
+let randomItems = getRandomWithSeed(items, seed, 3, items);
+
+const wiki = new WikiApi();
+
+for (let i in randomItems) {
+  randomItems[i]['thumbnail'] = wiki.getPageInfoResult(randomItems[i]['name']).then((item) => {
+    return '<img src="' + item['thumbnail'] + '" alt="' + randomItems[i]['name'] + '" height="42" width="42">'
+  }).then((item) => {
+    document.getElementById("starting-items-img").innerHTML += item;
+    document.getElementById("starting-items-name").innerHTML = randomItems.map(items => `C${items.id} ${items.name}`).join("<br\> ");
+  });
+}
+
+
+
+
 document.getElementById("end-room").textContent = endingRoom;
-document.getElementById("generate-seed").addEventListener("click", function() {
+document.getElementById("generate-seed").addEventListener("click", function () {
   window.location = `?seed=${generateRandomSeed()}`;
 });
-document.getElementById("share").addEventListener("click", function() {
+document.getElementById("share").addEventListener("click", function () {
   copyToClipboard();
 });
 
-daily.addEventListener("click", function() {
+daily.addEventListener("click", function () {
   // To remove the search params
   window.location = window.location.pathname;
 });
@@ -83,7 +97,7 @@ function copyToClipboard() {
 
   // show the alert for 3 seconds
   alertDiv.style.visibility = "visible";
-  setTimeout(function() {
+  setTimeout(function () {
     alertDiv.style.visibility = "hidden";
   }, 3000);
 }
