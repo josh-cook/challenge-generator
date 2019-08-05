@@ -1,8 +1,10 @@
 body {
-  font-family: "Press Start 2P", monospace;
+  font-family: 'Press Start 2P', monospace;
   color: aliceblue;
   background-image: url(../assets/background1.png);
-  background-size: cover;
+  background-size: 100%;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 .page-title {
@@ -29,7 +31,7 @@ body {
 
 .challenge-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   grid-column: 1 / 4;
   grid-row: 2;
 }
@@ -50,7 +52,7 @@ body {
 }
 
 .btn {
-  font-family: "Press Start 2P";
+  font-family: 'Press Start 2P';
   box-shadow: 2px 1px;
   border-style: inset;
   border-color: black;
