@@ -1,17 +1,22 @@
 body {
-  font-family: "Press Start 2P", monospace;
+  font-family: 'Press Start 2P', monospace;
+  color: aliceblue;
+  background-image: url(../assets/background1.png);
+  background-size: 100%;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 .page-title {
   text-align: center;
   color: #c63fca;
-  grid-column: 1 / 4;
+  grid-column: 2;
   grid-row: 1;
 }
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 0.5fr);
   grid-gap: 10px;
   grid-template-rows: repeat(2, 1fr);
 }
@@ -26,7 +31,7 @@ body {
 
 .challenge-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   grid-column: 1 / 4;
   grid-row: 2;
 }
@@ -47,7 +52,7 @@ body {
 }
 
 .btn {
-  font-family: "Press Start 2P";
+  font-family: 'Press Start 2P';
   box-shadow: 2px 1px;
   border-style: inset;
   border-color: black;
