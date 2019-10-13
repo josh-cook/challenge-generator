@@ -36,10 +36,6 @@
     "name": "Bittersweet"
   },
   {
-    "hex": "#000000",
-    "name": "Black"
-  },
-  {
     "hex": "#ACE5EE",
     "name": "Blizzard Blue"
   },
@@ -248,10 +244,6 @@
     "name": "Melon"
   },
   {
-    "hex": "#1A4876",
-    "name": "Midnight Blue"
-  },
-  {
     "hex": "#30BA8F",
     "name": "Mountain Meadow"
   },
@@ -286,10 +278,6 @@
   {
     "hex": "#E6A8D7",
     "name": "Orchid"
-  },
-  {
-    "hex": "#414A4C",
-    "name": "Outer Space"
   },
   {
     "hex": "#FF6E4A",
