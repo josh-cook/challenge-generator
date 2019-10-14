@@ -12,17 +12,28 @@ import items from "../json/items.json";
 import rooms from "../json/rooms.json";
 
 export default class ChallengeGenerator extends Component {
-  constructor() {
-    super();
+  state = {
+    seed: getCurrentSeed()
+  };
 
-    this.state = {
-      seed: getCurrentSeed()
-    };
+  componentDidMount() {
+    window.addEventListener("popstate", this.handleBackButton);
   }
 
-  handleGenerate() {
-    window.location = `?seed=${generateRandomSeed()}`;
+  componentWillUnmount() {
+    window.removeEventListener("popstate", this.handleBackButton);
   }
+
+  handleBackButton = () => {
+    this.setState({ seed: getCurrentSeed() });
+  };
+
+  handleGenerate = () => {
+    const newSeed = generateRandomSeed();
+
+    this.setState({ seed: newSeed });
+    history.pushState(null, "", `?seed=${newSeed}`);
+  };
 
   render() {
     const { seed } = this.state;
