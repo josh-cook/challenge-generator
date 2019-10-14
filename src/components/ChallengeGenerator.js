@@ -5,6 +5,7 @@ import Rule from "./Rule";
 import adjectives from "../json/adjectives.json";
 import characters from "../json/characters.json";
 import colours from "../json/colours.json";
+import copyToClipboard from "../lib/copyToClipboard";
 import getCurrentSeed from "../lib/getCurrentSeed";
 import getRandomWithSeed from "../lib/getRandomWithSeed";
 import generateRandomSeed from "../lib/generateRandomSeed";
@@ -13,7 +14,9 @@ import rooms from "../json/rooms.json";
 
 export default class ChallengeGenerator extends Component {
   state = {
-    seed: getCurrentSeed()
+    seed: getCurrentSeed(),
+    copied: false,
+    timerId: null
   };
 
   componentDidMount() {
@@ -35,8 +38,22 @@ export default class ChallengeGenerator extends Component {
     history.pushState(null, "", `?seed=${newSeed}`);
   };
 
+  handleShare = () => {
+    copyToClipboard(window.location.href);
+
+    clearTimeout(this.state.timerId);
+
+    this.setState({ copied: true });
+
+    const timerId = setTimeout(() => {
+      this.setState({ copied: false });
+    }, 3000);
+
+    this.setState({ timerId });
+  };
+
   render() {
-    const { seed } = this.state;
+    const { copied, seed } = this.state;
 
     const [playableCharacter] = getRandomWithSeed(characters, seed);
     const [endingRoom] = getRandomWithSeed(rooms, seed);
@@ -67,8 +84,9 @@ export default class ChallengeGenerator extends Component {
         <div className="buttons">
           <Button onClick={this.handleGenerate}>Generate Seed</Button>{" "}
           <Button onClick={this.handleShare}>Share</Button>{" "}
-          <Button onClick={this.handleHelp}>Help</Button>{" "}
+          <Button onClick={this.handleHelp}>Help</Button>
         </div>
+        {copied && <div className="alert-box">URL has been copied</div>}
       </>
     );
   }
