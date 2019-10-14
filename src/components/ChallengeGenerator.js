@@ -54,9 +54,9 @@ export default class ChallengeGenerator extends Component {
           <Rule type="Room">{endingRoom}</Rule>
         </div>
         <div className="buttons">
-          <Button onClick={this.handleGenerate}>Generate Seed</Button>
-          <Button>Share</Button>
-          <Button>Help</Button>
+          <Button onClick={this.handleGenerate}>Generate Seed</Button>{" "}
+          <Button onClick={this.handleShare}>Share</Button>{" "}
+          <Button onClick={this.handleHelp}>Help</Button>{" "}
         </div>
       </>
     );
