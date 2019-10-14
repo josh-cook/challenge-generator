@@ -8,7 +8,7 @@ export class ChallengeGenerator extends Component {
       seed: getCurrentSeed(),
     };
   }
-
+  
   render() {
     return (
       <div>
