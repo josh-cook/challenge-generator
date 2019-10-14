@@ -2,17 +2,19 @@
   "name": "challenge-generator",
   "version": "0.0.0",
   "description": "A Challenge Generator For Binding Of Isaac",
-  "repository": "git@github.com:cookiej91/challenge-generator.git",
-  "author": "Josh Cook (cookiej91)",
+  "repository": "git@github.com:josh-cook/challenge-generator.git",
+  "author": "Josh Cook (josh-cook)",
   "license": "MIT",
   "scripts": {
-    "start": "parcel html/index.html",
-    "build": "parcel build --public-url . html/index.html"
+    "start": "parcel public/index.html",
+    "build": "parcel build --public-url . public/index.html"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.2"
+    "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "random-seed": "^0.3.0"
+    "random-seed": "^0.3.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   }
 }
