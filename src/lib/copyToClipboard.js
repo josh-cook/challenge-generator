@@ -1,6 +1,6 @@
 export default function copyToClipboard(text) {
   const newElement = document.createElement("input");
-  
+
   document.body.appendChild(newElement);
   newElement.value = text;
   newElement.select();

@@ -15,9 +15,10 @@ import rooms from "../json/rooms.json";
 export default class ChallengeGenerator extends Component {
   state = {
     seed: getCurrentSeed(),
-    copied: false,
-    timerId: null
+    copied: false
   };
+
+  timerId = null;
 
   componentDidMount() {
     window.addEventListener("popstate", this.handleBackButton);
@@ -25,6 +26,7 @@ export default class ChallengeGenerator extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("popstate", this.handleBackButton);
+    clearTimeout(this.timerId);
   }
 
   handleBackButton = () => {
@@ -41,15 +43,13 @@ export default class ChallengeGenerator extends Component {
   handleShare = () => {
     copyToClipboard(window.location.href);
 
-    clearTimeout(this.state.timerId);
+    clearTimeout(this.timerId);
 
     this.setState({ copied: true });
 
-    const timerId = setTimeout(() => {
+    this.timerId = setTimeout(() => {
       this.setState({ copied: false });
     }, 3000);
-
-    this.setState({ timerId });
   };
 
   render() {
