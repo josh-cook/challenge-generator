@@ -6,16 +6,22 @@ import adjectives from "../json/adjectives.json";
 import characters from "../json/characters.json";
 import colours from "../json/colours.json";
 import copyToClipboard from "../lib/copyToClipboard";
-import getCurrentSeed from "../lib/getCurrentSeed";
+import { getDailySeed, getURLSeed } from "../lib/getSeeds";
 import getRandomWithSeed from "../lib/getRandomWithSeed";
 import generateRandomSeed from "../lib/generateRandomSeed";
 import items from "../json/items.json";
 import rooms from "../json/rooms.json";
 
+const getCurrentSeed = () => {
+  const urlSeed = getURLSeed();
+  return urlSeed === null ? getDailySeed() : urlSeed;
+};
+
 export default class ChallengeGenerator extends Component {
   state = {
     seed: getCurrentSeed(),
-    copied: false
+    copied: false,
+    daily: getURLSeed() === null
   };
 
   timerId = null;
@@ -30,13 +36,13 @@ export default class ChallengeGenerator extends Component {
   }
 
   handleBackButton = () => {
-    this.setState({ seed: getCurrentSeed() });
+    this.setState({ seed: getCurrentSeed(), daily: getURLSeed() === null });
   };
 
   handleGenerate = () => {
     const newSeed = generateRandomSeed();
 
-    this.setState({ seed: newSeed });
+    this.setState({ seed: newSeed, daily: false });
     history.pushState(null, "", `?seed=${newSeed}`);
   };
 
@@ -52,8 +58,13 @@ export default class ChallengeGenerator extends Component {
     }, 3000);
   };
 
+  handleDaily = () => {
+    history.pushState(null, "", window.location.pathname);
+    this.setState({ daily: true, seed: getDailySeed() });
+  };
+
   render() {
-    const { copied, seed } = this.state;
+    const { copied, daily, seed } = this.state;
 
     const [playableCharacter] = getRandomWithSeed(characters, seed);
     const [endingRoom] = getRandomWithSeed(rooms, seed);
@@ -84,7 +95,7 @@ export default class ChallengeGenerator extends Component {
         <div className="buttons">
           <Button onClick={this.handleGenerate}>Generate Seed</Button>{" "}
           <Button onClick={this.handleShare}>Share</Button>{" "}
-          <Button onClick={this.handleHelp}>Help</Button>
+          {!daily && <Button onClick={this.handleDaily}>Daily</Button>}
         </div>
         {copied && <div className="alert-box">URL has been copied</div>}
       </>
