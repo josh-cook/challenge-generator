@@ -1,22 +1,51 @@
 # Challenge Generator
 
-This is a Challenge Generator For Binding Of Isaac - Afterbirth+.
+A challenge generator For Binding Of Isaac - Afterbirth.
+A live version can be found hosted [here](https://josh-cook.github.io/challenge-generator/).
 
-Try it out here:
-[Binding of Isaac - Challenge Generator](https://josh-cook.github.io/challenge-generator/)
+Challenges are generated using a seed, which can either be based on the current
+date or can be a fixed string passed in via the URL.
 
-A daily seed is automatically generated based on the days current date.
-If a different seed is needed there is the ability to generate a new seed which will refresh upon generation.
-
-There is also the ability to share the seed by copying it to clipboard and pasting wherever necessary.
+The generator provides the ability to generate new fixed seeds and share them via the clipboard.
 
 ## Building the generator
 
-- Checkout the project
-- Inside the project folder you will need npm to build this first `npm install`
-- Then build the project `npm run build`
-- After build has complete you can then spin the project up: `npm start`
-- Go to the server the generator has been built on
-- It will look something like the following:
+ 1. Clone the project:
+     ```Shell
+     $ git clone https://github.com/josh-cook/challenge-generator.git
+     ```
+ 
+ 2. Install the project's dependencies:
+     ```Shell
+     $ npm install
+     ```
 
-![Alt text](/readme-assets/build-image.png "Title")
+ 3. Build the project:
+    ```Shell
+    $ npm run build
+    ```
+    You should now have a built version of the challenge generator in `dist`.
+    
+## Working on the generator
+
+ 1. Clone the project:
+     ```Shell
+     $ git clone https://github.com/josh-cook/challenge-generator.git
+     ```
+ 
+ 2. Install the project's dependencies:
+     ```Shell
+     $ npm install
+     ```
+
+ 3. Start the project's development server:
+    ```Shell
+    $ npm run start
+    ```
+    You should now see output like the following:
+    
+    ![Build image](/readme-assets/build-image.png)
+
+    You can now visit http://localhost:1234 to view the app.
+    
+Note that the challenge generator follows the [prettier](https://prettier.io/) formatting style.
