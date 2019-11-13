@@ -1,7 +1,7 @@
 import createRandom from "random-seed";
 
 // Get a random element from the array based on the seed provided.
-export function getRandomWithSeed(array, seed, quantity = 1) {
+export default function getRandomWithSeed(array, seed, quantity = 1) {
   const random = createRandom(seed);
   const remaining = array.slice();
   const picked = [];
